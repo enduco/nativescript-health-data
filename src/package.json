@@ -36,24 +36,14 @@
     "Google Fit"
   ],
   "author": {
-    "name": "Eddy Verbruggen",
-    "email": "eddyverbruggen@gmail.com"
+    "name": "enduco",
+    "email": "it@enduco.app"
   },
-  "contributors": [
-    {
-      "name": "Filipe Mendes",
-      "email": "filipemendes1994@gmail.com"
-    },
-    {
-      "name": "Daniel Leal",
-      "url": "https://github.com/danielgek"
-    }
-  ],
   "bugs": {
-    "url": "https://github.com/filipemendes1994/nativescript-health-data/issues"
+    "url": "https://github.com/enduco/nativescript-health-data/issues"
   },
   "license": "MIT",
-  "homepage": "https://github.com/filipemendes1994/nativescript-health-data",
+  "homepage": "https://github.com/enduco/nativescript-health-data",
   "readmeFilename": "README.md",
   "devDependencies": {
     "tns-core-modules": "~6.0.0",
