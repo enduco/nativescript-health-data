@@ -1,4 +1,5 @@
 import {
+  BiologicalSex,
   Common,
   HealthDataApi,
   HealthDataType,
@@ -45,6 +46,20 @@ export class HealthData extends Common implements HealthDataApi {
         }));
       }
       resolve(available);
+    });
+  }
+
+  dateOfBirth(): Promise<Date> {
+    return new Promise<Date>((resolve, reject) => {
+      // TODO: implement
+      resolve(null);
+    });
+  }
+
+  biologicalSex(): Promise<BiologicalSex> {
+    return new Promise<BiologicalSex>((resolve, reject) => {
+      // TODO: implement
+      resolve(null);
     });
   }
 

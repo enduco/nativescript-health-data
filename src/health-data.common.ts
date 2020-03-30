@@ -17,6 +17,8 @@ export type BackgroundUpdateFrequency = "immediate" | "hourly" | "daily" | "week
 
 export type SortOrder = "asc" | "desc";
 
+export declare type BiologicalSex = "male" | "female" | "other";
+
 export interface QueryRequest {
   startDate: Date;
   endDate: Date;
@@ -110,6 +112,10 @@ export interface HealthDataApi {
   startMonitoring(opts: StartMonitoringRequest): Promise<void>;
 
   stopMonitoring(opts: StopMonitoringRequest): Promise<void>;
+
+  dateOfBirth(): Promise<Date>;
+
+  biologicalSex(): Promise<BiologicalSex>;
 }
 
 export abstract class Common {

@@ -1,5 +1,5 @@
 import {
-  BackgroundUpdateFrequency,
+  BackgroundUpdateFrequency, BiologicalSex,
   Common,
   HealthDataApi,
   HealthDataType,
@@ -18,6 +18,58 @@ export class HealthData extends Common implements HealthDataApi {
     if (HKHealthStore.isHealthDataAvailable()) {
       this.healthStore = HKHealthStore.new();
     }
+  }
+
+  dateOfBirth(): Promise<Date> {
+    return new Promise<Date>((resolve, reject) => {
+      if (this.healthStore === undefined) {
+        reject("Health not available");
+        return;
+      }
+
+      let dateOfBirth = this.healthStore.dateOfBirthComponentsWithError();
+
+      if (dateOfBirth === undefined) {
+        resolve(null);
+        return;
+      }
+
+      resolve(dateOfBirth.date);
+    });
+  }
+
+  biologicalSex(): Promise<BiologicalSex> {
+    return new Promise<BiologicalSex>((resolve, reject) => {
+      if (this.healthStore === undefined) {
+        reject("Health not available");
+        return;
+      }
+
+      let sex = this.healthStore.biologicalSexWithError();
+
+      if (sex === undefined) {
+        resolve(null);
+        return;
+      }
+
+      switch (sex.biologicalSex) {
+        case HKBiologicalSex.NotSet:
+          resolve(null);
+          return;
+        case HKBiologicalSex.Male:
+          resolve("male");
+          return;
+        case HKBiologicalSex.Female:
+          resolve("female");
+          return;
+        case HKBiologicalSex.Other:
+          resolve("other");
+          return;
+        default:
+          resolve(null);
+          return;
+      }
+    });
   }
 
   isAvailable(updateGooglePlayServicesIfNeeded? /* for Android */: boolean): Promise<boolean> {
@@ -426,6 +478,8 @@ const acceptableDataTypes = {
   height: 'height',
   weight: 'bodyMass',
   heartRate: 'heartRate',
-  fatPercentage: 'bodyFatPercentage'
+  fatPercentage: 'bodyFatPercentage',
+  dateOfBirth: 'dateOfBirthComponents',
+  biologicalSex: 'biologicalSex'
   // "nutrition" : ""
 };
