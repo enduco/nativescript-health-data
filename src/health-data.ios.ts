@@ -29,7 +29,7 @@ export class HealthData extends Common implements HealthDataApi {
 
       let dateOfBirth = this.healthStore.dateOfBirthComponentsWithError();
 
-      if (dateOfBirth === undefined) {
+      if (dateOfBirth == null) {
         resolve(null);
         return;
       }
@@ -47,7 +47,7 @@ export class HealthData extends Common implements HealthDataApi {
 
       let sex = this.healthStore.biologicalSexWithError();
 
-      if (sex === undefined) {
+      if (sex == null) {
         resolve(null);
         return;
       }
